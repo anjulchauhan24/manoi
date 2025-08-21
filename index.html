@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manoi-style Medical Training | Nationwide, Anytime</title>
+  <meta name="description" content="Tailored emergency response drills and medical training programs for hospitals, schools, and corporates." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    :root { --bg:#0f172a; --fg:#0b1220; --card:#ffffff; --text:#0f172a; --accent:#22c55e; }
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#f6f8fb;color:var(--text)}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;z-index:10}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    a{color:inherit;text-decoration:none}
+    .btn{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600}
+    .btn.outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+    .hero{background:linear-gradient(180deg,#eef7ff,transparent);padding:64px 0}
+    .hero h1{font-size:clamp(28px,4vw,46px);margin:0 0 12px}
+    .grid{display:grid;gap:18px}
+    .programs{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:18px}
+    .badge{display:inline-block;background:#eafaf0;color:#15803d;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    footer{border-top:1px solid #e5e7eb;background:#fff;margin-top:32px}
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px}
+    .logos{opacity:.7;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;align-items:center}
+  </style>
+  <script>
+    // basic form handler (replace with real endpoint)
+    async function submitForm(e){e.preventDefault();
+      const data=Object.fromEntries(new FormData(e.target).entries());
+      const btn=e.target.querySelector("button"); btn.disabled=true; btn.textContent="Sending…";
+      try{
+        // TODO: replace with your API endpoint
+        await new Promise(r=>setTimeout(r,900));
+        alert("Thanks! Our team will contact you shortly.");
+        e.target.reset();
+      }catch(err){alert("Something went wrong. Please try again.");}
+      finally{btn.disabled=false; btn.textContent="Request a Drill";}
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" aria-label="Home"><strong>Manoi-style Training</strong></a>
+        <div class="nav-actions">
+          <a class="btn outline" href="#programs">Programs</a>
+          <a class="btn" href="#contact">Request a Drill</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="badge">Nationwide • On-site • Certified Trainers</span>
+        <h1>Medical Training & Emergency Response Drills for Your Organization</h1>
+        <p style="max-width:680px">We design and deliver tailored programs—BLS, First Aid, AED, and full-scale emergency drills—so your staff stays calm, compliant, and ready when it matters.</p>
+        <div style="margin-top:16px">
+          <a class="btn" href="#contact">Get a Proposal</a>
+          <a class="btn outline" href="#programs" style="margin-left:8px">Explore Programs</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="container">
+      <h2>Our Programs</h2>
+      <div class="grid programs">
+        <article class="card">
+          <h3>BLS & First Aid</h3>
+          <p>CPR, choking response, wound care, recovery position, and scene safety—adapted to your workplace.</p>
+        </article>
+        <article class="card">
+          <h3>AED Training</h3>
+          <p>Hands-on AED usage, maintenance, safety checks, and incident documentation.</p>
+        </article>
+        <article class="card">
+          <h3>Emergency Drills</h3>
+          <p>Table-top to full-scale multi-department drills with post-incident debrief and gap analysis.</p>
+        </article>
+        <article class="card">
+          <h3>Custom Programs</h3>
+          <p>Healthcare, factories, schools, hospitality—custom modules with role-based scenarios.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Why organizations choose us</h2>
+      <div class="grid programs">
+        <div class="card"><strong>Tailored</strong><br/>Built around your policies, staff size, and risks.</div>
+        <div class="card"><strong>Compliant</strong><br/>Meets national guidelines; certificates for attendees.</div>
+        <div class="card"><strong>Measurable</strong><br/>Pre/post assessments and skill checklists.</div>
+        <div class="card"><strong>On-site / Hybrid</strong><br/>Nationwide coverage with flexible delivery.</div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Trusted by teams</h2>
+      <div class="logos">
+        <div class="card">Hospital Group</div>
+        <div class="card">School Network</div>
+        <div class="card">Manufacturing Plant</div>
+        <div class="card">Hotel Chain</div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Request a Drill / Training Proposal</h2>
+      <form onsubmit="submitForm(event)">
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+          <input name="name" placeholder="Your name" required />
+          <input name="org" placeholder="Organization" required />
+          <input name="email" type="email" placeholder="Work email" required />
+          <input name="phone" placeholder="Phone (optional)" />
+        </div>
+        <textarea name="message" rows="5" placeholder="Tell us about your team, location(s), and desired dates…" required></textarea>
+        <button class="btn" type="submit">Request a Drill</button>
+      </form>
+      <p style="font-size:14px;color:#6b7280;margin-top:8px">By submitting, you agree to be contacted about training services.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap">
+      <small>© <span id="y"></span> Manoi-style Training</small>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Manoi-style Medical Training",
+    "url":"https://your-domain.example",
+    "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"[email protected]"},
+    "sameAs":["https://www.linkedin.com/company/your-company"]
+  }
+  </script>
+</body>
+</html>

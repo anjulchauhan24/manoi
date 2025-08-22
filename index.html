@@ -1,146 +1,610 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Manoi-style Medical Training | Nationwide, Anytime</title>
-  <meta name="description" content="Tailored emergency response drills and medical training programs for hospitals, schools, and corporates." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Manoi — Step 1 (Header + Hero)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
-    :root { --bg:#0f172a; --fg:#0b1220; --card:#ffffff; --text:#0f172a; --accent:#22c55e; }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#f6f8fb;color:var(--text)}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #e5e7eb;z-index:10}
-    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    a{color:inherit;text-decoration:none}
-    .btn{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600}
-    .btn.outline{background:transparent;color:var(--accent);border:2px solid var(--accent)}
-    .hero{background:linear-gradient(180deg,#eef7ff,transparent);padding:64px 0}
-    .hero h1{font-size:clamp(28px,4vw,46px);margin:0 0 12px}
-    .grid{display:grid;gap:18px}
-    .programs{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:18px}
-    .badge{display:inline-block;background:#eafaf0;color:#15803d;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
-    footer{border-top:1px solid #e5e7eb;background:#fff;margin-top:32px}
-    form{display:grid;gap:12px}
-    input, textarea{width:100%;padding:12px;border:1px solid #d1d5db;border-radius:10px}
-    .logos{opacity:.7;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;align-items:center}
+    .tag-tilt{transform:rotate(-12deg)}
+    .hero-slide{background-size:cover;background-position:center}
   </style>
-  <script>
-    // basic form handler (replace with real endpoint)
-    async function submitForm(e){e.preventDefault();
-      const data=Object.fromEntries(new FormData(e.target).entries());
-      const btn=e.target.querySelector("button"); btn.disabled=true; btn.textContent="Sending…";
-      try{
-        // TODO: replace with your API endpoint
-        await new Promise(r=>setTimeout(r,900));
-        alert("Thanks! Our team will contact you shortly.");
-        e.target.reset();
-      }catch(err){alert("Something went wrong. Please try again.");}
-      finally{btn.disabled=false; btn.textContent="Request a Drill";}
-    }
-  </script>
 </head>
-<body>
-  <header>
-    <div class="container">
-      <nav>
-        <a href="/" aria-label="Home"><strong>Manoi-style Training</strong></a>
-        <div class="nav-actions">
-          <a class="btn outline" href="#programs">Programs</a>
-          <a class="btn" href="#contact">Request a Drill</a>
+<body class="text-gray-900 antialiased">
+  <!-- Top strip -->
+  <div class="w-full bg-[#0b1a72] text-white text-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
+      <div class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7Zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5Z"/></svg>
+        <span>G-31, 1st Floor Sector 3 Noida | Corporate Address</span>
+      </div>
+      <a href="#enquire" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition px-3 py-1 rounded">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4"/><path d="M12 14v-4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M1 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M12 22h0"/><path d="M19.07 19.07l-2.83-2.83"/><path d="M23 12h-4"/><path d="M19.07 4.93l-2.83 2.83"/></svg>
+        Enquire Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header x-data="{open:false}" class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded bg-gradient-to-br from-sky-500 to-indigo-600"></div>
+        <div>
+          <div class="text-xl font-bold leading-none">MANOI</div>
+          <div class="text-[11px] text-gray-500 tracking-widest">LIFECARE AND SAVER</div>
         </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#" class="text-indigo-600">Home</a>
+        <a href="#about" class="hover:text-indigo-600">About Us</a>
+        <a href="#clinical" class="hover:text-indigo-600">Clinical Training</a>
+        <a href="#corporate" class="hover:text-indigo-600">Corporate Training</a>
+        <a href="#contact" class="hover:text-indigo-600">Contact Us</a>
       </nav>
+      <div class="hidden md:block">
+        <a href="#enquire" class="px-5 py-2 rounded bg-[#d2341f] text-white font-semibold hover:opacity-90">ENQUIRE</a>
+      </div>
+      <button class="md:hidden" @click="open=!open" aria-label="Toggle menu">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div class="md:hidden px-4 pb-4" x-show="open" x-transition>
+      <a class="block py-2" href="#">Home</a>
+      <a class="block py-2" href="#about">About Us</a>
+      <a class="block py-2" href="#clinical">Clinical Training</a>
+      <a class="block py-2" href="#corporate">Corporate Training</a>
+      <a class="block py-2" href="#contact">Contact Us</a>
+      <a class="inline-flex mt-2 px-4 py-2 rounded bg-[#d2341f] text-white font-semibold" href="#enquire">ENQUIRE</a>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <span class="badge">Nationwide • On-site • Certified Trainers</span>
-        <h1>Medical Training & Emergency Response Drills for Your Organization</h1>
-        <p style="max-width:680px">We design and deliver tailored programs—BLS, First Aid, AED, and full-scale emergency drills—so your staff stays calm, compliant, and ready when it matters.</p>
-        <div style="margin-top:16px">
-          <a class="btn" href="#contact">Get a Proposal</a>
-          <a class="btn outline" href="#programs" style="margin-left:8px">Explore Programs</a>
+  <!-- Hero / Slider -->
+  <section x-data="{
+            i:0,
+            slides:[
+              'https://images.unsplash.com/photo-1583912086096-660d9a6b83aa?q=80&w=1920&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1563213126-a4273aed2012?q=80&w=1920&auto=format&fit=crop',
+              'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1920&auto=format&fit=crop']
+          }" class="relative overflow-hidden">
+    <!-- slides -->
+    <template x-for="(src,idx) in slides" :key="idx">
+      <div x-show="i===idx" x-transition.opacity class="hero-slide h-[78vh] md:h-[86vh]" :style="`background-image:url(${src})`">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="max-w-7xl mx-auto relative z-10 h-full flex flex-col justify-center px-4">
+          <!-- orange tilted tag -->
+          <div class="inline-block tag-tilt bg-[#f39c12] text-white font-semibold px-4 py-2 w-max mb-6 shadow">Innovation Meets Urgency</div>
+          <h1 class="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
+            Manoi– Immersive, Simulation-based emergency training
+          </h1>
+        </div>
+        <!-- left CTA block example -->
+        <div class="absolute left-10 bottom-10">
+          <a href="#get-started" class="bg-[#34a853] text-white font-semibold px-6 py-4 rounded-lg shadow hover:scale-[1.02] transition">Let's Get Started</a>
         </div>
       </div>
-    </section>
+    </template>
 
-    <section id="programs" class="container">
-      <h2>Our Programs</h2>
-      <div class="grid programs">
-        <article class="card">
-          <h3>BLS & First Aid</h3>
-          <p>CPR, choking response, wound care, recovery position, and scene safety—adapted to your workplace.</p>
-        </article>
-        <article class="card">
-          <h3>AED Training</h3>
-          <p>Hands-on AED usage, maintenance, safety checks, and incident documentation.</p>
-        </article>
-        <article class="card">
-          <h3>Emergency Drills</h3>
-          <p>Table-top to full-scale multi-department drills with post-incident debrief and gap analysis.</p>
-        </article>
-        <article class="card">
-          <h3>Custom Programs</h3>
-          <p>Healthcare, factories, schools, hospitality—custom modules with role-based scenarios.</p>
-        </article>
-      </div>
-    </section>
+    <!-- nav arrows -->
+    <button @click="i=(i-1+slides.length)%slides.length" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-10 h-10 grid place-content-center rounded-full shadow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button @click="i=(i+1)%slides.length" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white w-10 h-10 grid place-content-center rounded-full shadow">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
 
-    <section class="container">
-      <h2>Why organizations choose us</h2>
-      <div class="grid programs">
-        <div class="card"><strong>Tailored</strong><br/>Built around your policies, staff size, and risks.</div>
-        <div class="card"><strong>Compliant</strong><br/>Meets national guidelines; certificates for attendees.</div>
-        <div class="card"><strong>Measurable</strong><br/>Pre/post assessments and skill checklists.</div>
-        <div class="card"><strong>On-site / Hybrid</strong><br/>Nationwide coverage with flexible delivery.</div>
-      </div>
-    </section>
-
-    <section class="container">
-      <h2>Trusted by teams</h2>
-      <div class="logos">
-        <div class="card">Hospital Group</div>
-        <div class="card">School Network</div>
-        <div class="card">Manufacturing Plant</div>
-        <div class="card">Hotel Chain</div>
-      </div>
-    </section>
-
-    <section id="contact" class="container">
-      <h2>Request a Drill / Training Proposal</h2>
-      <form onsubmit="submitForm(event)">
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-          <input name="name" placeholder="Your name" required />
-          <input name="org" placeholder="Organization" required />
-          <input name="email" type="email" placeholder="Work email" required />
-          <input name="phone" placeholder="Phone (optional)" />
-        </div>
-        <textarea name="message" rows="5" placeholder="Tell us about your team, location(s), and desired dates…" required></textarea>
-        <button class="btn" type="submit">Request a Drill</button>
-      </form>
-      <p style="font-size:14px;color:#6b7280;margin-top:8px">By submitting, you agree to be contacted about training services.</p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap">
-      <small>© <span id="y"></span> Manoi-style Training</small>
-      <a href="/privacy.html">Privacy</a>
+    <!-- dots -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+      <template x-for="(src,idx) in slides" :key="`dot-${idx}`">
+        <button @click="i=idx" class="w-2.5 h-2.5 rounded-full" :class="i===idx ? 'bg-white' : 'bg-white/50'"></button>
+      </template>
     </div>
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Manoi-style Medical Training",
-    "url":"https://your-domain.example",
-    "contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"[email protected]"},
-    "sameAs":["https://www.linkedin.com/company/your-company"]
-  }
-  </script>
+
+    <!-- floating call & chat buttons -->
+    <a href="tel:+919876543210" class="fixed left-4 bottom-6 w-14 h-14 rounded-full bg-[#1aa248] text-white grid place-content-center shadow-xl hover:scale-105 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.4 21 3 13.6 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.2 2.2z"/></svg>
+    </a>
+    <a href="#whatsapp" class="fixed right-4 bottom-6 w-14 h-14 rounded-full bg-[#25D366] text-white grid place-content-center shadow-xl hover:scale-105 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M20.52 3.48A11.86 11.86 0 0012 0C5.35 0 0 5.35 0 12c0 2.1.55 4.06 1.52 5.77L0 24l6.36-1.67A11.93 11.93 0 0012 24c6.65 0 12-5.35 12-12 0-3.19-1.25-6.17-3.48-8.52zM12 21.33a9.33 9.33 0 01-4.75-1.3l-.34-.2-3.77.99 1.01-3.67-.22-.38A9.33 9.33 0 1121.33 12 9.34 9.34 0 0112 21.33zm5.32-6.96c-.29-.15-1.71-.84-1.98-.94-.27-.1-.47-.15-.67.15-.2.29-.77.94-.94 1.14-.17.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.53.15-.18.2-.31.31-.51.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.29-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.12.15.2 2.13 3.25 5.17 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35z"/></svg>
+    </a>
+  </section>
+
+  <!-- Step 2: Certification + Enquiry Form -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Left Side: Heading + Badges -->
+    <div>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">
+        Get AHA Certified Today!
+      </h2>
+      <p class="text-gray-600 mb-6">
+        Join our training programs and become certified by the American Heart Association (AHA).  
+        Trusted worldwide, recognized everywhere.
+      </p>
+
+      <!-- Badges -->
+      <div class="flex space-x-6">
+        <img src="https://via.placeholder.com/100x100" alt="Badge 1" class="h-20 w-auto">
+        <img src="https://via.placeholder.com/100x100" alt="Badge 2" class="h-20 w-auto">
+        <img src="https://via.placeholder.com/100x100" alt="Badge 3" class="h-20 w-auto">
+      </div>
+    </div>
+
+    <!-- Right Side: Enquiry Form -->
+    <div>
+      <div class="bg-white rounded-2xl shadow-lg p-8">
+        <h3 class="text-xl font-semibold text-gray-800 mb-6">
+          Enquire Now
+        </h3>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+          <div>
+            <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+          <div>
+            <input type="tel" placeholder="Your Phone" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+          <div>
+            <textarea placeholder="Your Message" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Step 3: Courses Section -->
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Section Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Our Popular Courses
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Choose from our AHA-certified programs and start your training journey today.
+      </p>
+    </div>
+
+    <!-- Course Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Course Card 1 -->
+      <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
+        <img src="https://via.placeholder.com/400x250" alt="Course 1" class="rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Basic Life Support (BLS)
+        </h3>
+        <p class="text-gray-600 mb-4">
+          Learn essential CPR and emergency response skills as per AHA guidelines.
+        </p>
+        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Course Card 2 -->
+      <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
+        <img src="https://via.placeholder.com/400x250" alt="Course 2" class="rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Advanced Cardiac Life Support (ACLS)
+        </h3>
+        <p class="text-gray-600 mb-4">
+          Designed for healthcare providers to manage cardiovascular emergencies.
+        </p>
+        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Course Card 3 -->
+      <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
+        <img src="https://via.placeholder.com/400x250" alt="Course 3" class="rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Pediatric Advanced Life Support (PALS)
+        </h3>
+        <p class="text-gray-600 mb-4">
+          Specialized training for managing emergencies in infants and children.
+        </p>
+        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Step 4: Why Choose Us Section -->
+<section class="bg-gray-50 py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Why Choose Us
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        We provide top-quality training programs backed by the American Heart Association.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      
+      <!-- Feature 1 -->
+      <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
+        <div class="flex items-center justify-center mb-6">
+          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-3xl font-bold">
+            🎓
+          </span>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Certified Trainers
+        </h3>
+        <p class="text-gray-600">
+          Learn from AHA-certified instructors with years of real-world experience.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
+        <div class="flex items-center justify-center mb-6">
+          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-green-100 text-green-600 text-3xl font-bold">
+            🏥
+          </span>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Hands-On Training
+        </h3>
+        <p class="text-gray-600">
+          Get practical experience with mannequins and real emergency simulations.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
+        <div class="flex items-center justify-center mb-6">
+          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 text-3xl font-bold">
+            📜
+          </span>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          Globally Recognized
+        </h3>
+        <p class="text-gray-600">
+          Receive certifications valid worldwide and respected by hospitals.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
+        <div class="flex items-center justify-center mb-6">
+          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 text-3xl font-bold">
+            ⭐
+          </span>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          5-Star Rated
+        </h3>
+        <p class="text-gray-600">
+          Trusted by thousands of students with excellent reviews and outcomes.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Step 5: Testimonials Section -->
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        What Our Students Say
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Hear from people who completed our AHA-certified training programs.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Testimonial 1 -->
+      <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
+        <p class="text-gray-700 italic mb-6">
+          “The instructors were amazing! The training was very practical and gave me confidence in handling emergencies.”
+        </p>
+        <div class="flex items-center gap-4">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-gray-800">Anjali Sharma</h4>
+            <p class="text-sm text-gray-500">Nursing Student</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
+        <p class="text-gray-700 italic mb-6">
+          “The certification is globally valid. It helped me secure a job abroad as a healthcare provider.”
+        </p>
+        <div class="flex items-center gap-4">
+          <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-gray-800">Rahul Verma</h4>
+            <p class="text-sm text-gray-500">Medical Student</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
+        <p class="text-gray-700 italic mb-6">
+          “Very professional trainers. The hands-on practice made the learning experience super effective.”
+        </p>
+        <div class="flex items-center gap-4">
+          <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-gray-800">Siddharth Mehta</h4>
+            <p class="text-sm text-gray-500">Paramedic</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Step 6: Courses Section -->
+<section class="bg-gray-50 py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Our Training Programs
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Explore our American Heart Association (AHA) certified courses designed for healthcare professionals and students.
+      </p>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Course 1 -->
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
+        <img src="https://img.freepik.com/free-vector/medical-training-illustration_23-2148855633.jpg" alt="BLS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">BLS – Basic Life Support</h3>
+        <p class="text-gray-600 mb-4">Learn essential CPR and AED skills to respond in emergencies.</p>
+        <span class="text-sm text-gray-500 mb-4">Duration: 1 Day</span>
+        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
+        <img src="https://img.freepik.com/free-vector/first-aid-concept-illustration_114360-18685.jpg" alt="ACLS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">ACLS – Advanced Cardiac Life Support</h3>
+        <p class="text-gray-600 mb-4">Advanced training for managing cardiac emergencies in adults.</p>
+        <span class="text-sm text-gray-500 mb-4">Duration: 2 Days</span>
+        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
+        <img src="https://img.freepik.com/free-vector/healthcare-training-illustration_23-2148873462.jpg" alt="PALS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">PALS – Pediatric Advanced Life Support</h3>
+        <p class="text-gray-600 mb-4">Specialized training for emergency care of infants and children.</p>
+        <span class="text-sm text-gray-500 mb-4">Duration: 2 Days</span>
+        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+          Enroll Now
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Step 7: Gallery Section -->
+<section class="bg-white py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Our Training in Action
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Take a look at our world-class training facilities and hands-on learning sessions.
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <img src="https://img.freepik.com/free-photo/doctors-performing-medical-procedure-simulation_23-2149867412.jpg" alt="Training" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/nurses-training-with-medical-dummies_23-2149902321.jpg" alt="Lab" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/medical-students-practicing-with-patient-mannequin_23-2149897650.jpg" alt="Practice" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/healthcare-professionals-training-session_23-2149898745.jpg" alt="Classroom" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/student-doctor-training-mannequin_23-2149876321.jpg" alt="Workshop" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/doctors-nurses-training-hospital_23-2149902145.jpg" alt="Simulation" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/medical-practice-class_23-2149887435.jpg" alt="Demo" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://img.freepik.com/free-photo/modern-healthcare-lab-training_23-2149904321.jpg" alt="Facility" class="rounded-xl shadow-lg hover:scale-105 transition">
+    </div>
+  </div>
+</section>
+<!-- Step 8: Testimonials Section -->
+<section class="bg-gray-50 py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        What Our Students Say
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Hear from our students who trained with us and are now excelling in their careers.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div class="bg-white shadow-lg rounded-2xl p-6 hover:scale-105 transition">
+        <p class="text-gray-600 mb-4">
+          "The hands-on training was excellent! The instructors really care about your growth. I feel confident in my skills now."
+        </p>
+        <div class="flex items-center">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="text-gray-800 font-semibold">Kritika Sharma</h4>
+            <p class="text-gray-500 text-sm">Nursing Student</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bg-white shadow-lg rounded-2xl p-6 hover:scale-105 transition">
+        <p class="text-gray-600 mb-4">
+          "Best decision ever! The labs are modern and realistic. I was placed immediately after completing my training."
+        </p>
+        <div class="flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="text-gray-800 font-semibold">Rohit Verma</h4>
+            <p class="text-gray-500 text-sm">Medical Trainee</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bg-white shadow-lg rounded-2xl p-6 hover:scale-105 transition">
+        <p class="text-gray-600 mb-4">
+          "The mentors gave us real-world scenarios to practice. It was fun, interactive, and professional at the same time."
+        </p>
+        <div class="flex items-center">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+          <div>
+            <h4 class="text-gray-800 font-semibold">Sneha Patel</h4>
+            <p class="text-gray-500 text-sm">Healthcare Trainee</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Step 9: Contact / Call-to-Action Section -->
+<section class="bg-blue-600 py-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center text-white">
+    
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+      Ready to Start Your Journey?
+    </h2>
+    <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-8">
+      Join thousands of students who have built successful careers with us.  
+      Get in touch today and take the first step towards your future.
+    </p>
+
+    <!-- Call-to-Action Buttons -->
+    <div class="flex justify-center gap-6">
+      <a href="#enroll" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
+        Enroll Now
+      </a>
+      <a href="#contact" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form Section -->
+<section id="contact" class="bg-gray-50 py-20">
+  <div class="max-w-5xl mx-auto px-6 lg:px-12">
+    
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Get In Touch</h2>
+      <p class="text-gray-600 mt-4">Fill out the form and our team will reach out to you shortly.</p>
+    </div>
+
+    <!-- Form -->
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white shadow-lg p-8 rounded-2xl">
+      <input type="text" placeholder="Full Name" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="email" placeholder="Email Address" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="tel" placeholder="Phone Number" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="text" placeholder="Subject" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <textarea placeholder="Your Message" rows="5" class="md:col-span-2 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+      <button type="submit" class="md:col-span-2 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
+    
+    <!-- Column 1: Logo & About -->
+    <div>
+      <h2 class="text-white text-2xl font-bold mb-4">Manoi</h2>
+      <p class="text-gray-400 text-sm">
+        Empowering students with world-class courses, hands-on labs,  
+        and expert mentorship to shape future innovators.
+      </p>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div>
+      <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#about" class="hover:text-white">About Us</a></li>
+        <li><a href="#courses" class="hover:text-white">Courses</a></li>
+        <li><a href="#labs" class="hover:text-white">Labs</a></li>
+        <li><a href="#team" class="hover:text-white">Our Team</a></li>
+        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Resources -->
+    <div>
+      <h3 class="text-white font-semibold mb-4">Resources</h3>
+      <ul class="space-y-2">
+        <li><a href="#" class="hover:text-white">Blog</a></li>
+        <li><a href="#" class="hover:text-white">FAQs</a></li>
+        <li><a href="#" class="hover:text-white">Support</a></li>
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Contact Info -->
+    <div>
+      <h3 class="text-white font-semibold mb-4">Get in Touch</h3>
+      <p class="text-gray-400 text-sm mb-2">📍 123 Learning Street, Delhi, India</p>
+      <p class="text-gray-400 text-sm mb-2">📞 +91 98765 43210</p>
+      <p class="text-gray-400 text-sm mb-4">📧 support@manoi.in</p>
+
+      <!-- Social Media Icons -->
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-gray-700 mt-12 pt-6 text-center text-gray-500 text-sm">
+    © 2025 Manoi. All rights reserved. 
+  </div>
+</footer>
+
 </body>
 </html>

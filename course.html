@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Courses - Manoi Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .glass-morphism {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .course-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .course-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .animate-slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .filter-active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .modal {
+      transition: all 0.3s ease;
+    }
+    
+    .progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 text-gray-800">
+
+  <!-- Navbar -->
+<nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center text-2xl font-bold text-blue-600">
+        Manoi
+      </div>
+
+      <!-- Links -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="course.html" class="nav-link">Courses</a>
+        <a href="clinical-training.html" class="nav-link">Clinical Training</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Extra spacing so content doesn't hide behind fixed nav -->
+<div class="h-16"></div>
+
+<!-- Active Page Highlighter -->
+<script>
+  // highlight current page link
+  const currentPage = location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-link").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("text-blue-600", "font-semibold");
+    } else {
+      link.classList.add("text-gray-700", "hover:text-blue-600", "transition");
+    }
+  });
+</script>
+
+
+  <!-- Enhanced Hero Section with Particles Effect -->
+  <section class="gradient-bg text-white py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute w-96 h-96 bg-white rounded-full -top-48 -left-48 animate-pulse"></div>
+      <div class="absolute w-64 h-64 bg-white rounded-full -bottom-32 -right-32 animate-pulse delay-700"></div>
+    </div>
+    
+    <div class="container mx-auto text-center relative z-10 animate-fade-in">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">Transform Your Medical Career</h1>
+      <p class="text-xl max-w-3xl mx-auto mb-8 opacity-90">
+        Join over 10,000+ healthcare professionals who have advanced their careers through our comprehensive medical education programs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2">
+          <span>Explore Courses</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+        <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all flex items-center space-x-2">
+          <i data-lucide="play" class="w-4 h-4"></i>
+          <span>Watch Demo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="animate-slide-up">
+          <div class="text-3xl font-bold text-blue-600 mb-2">10,000+</div>
+          <div class="text-gray-600">Students Enrolled</div>
+        </div>
+        <div class="animate-slide-up" style="animation-delay: 0.1s;">
+          <div class="text-3xl font-bold text-blue-600 mb-2">95%</div>
+          <div class="text-gray-600">Success Rate</div>
+        </div>
+        <div class="animate-slide-up" style="animation-delay: 0.2s;">
+          <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
+          <div class="text-gray-600">Expert Instructors</div>
+        </div>
+        <div class="animate-slide-up" style="animation-delay: 0.3s;">
+          <div class="text-3xl font-bold text-blue-600 mb-2">24/7</div>
+          <div class="text-gray-600">Support Available</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Courses Section with Filters -->
+  <section class="container mx-auto py-16 px-6">
+    <div class="text-center mb-12 animate-slide-up">
+      <h2 class="text-4xl font-bold mb-4">Our Medical Programs</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Choose from our comprehensive selection of medical courses designed by industry experts.</p>
+    </div>
+
+    <!-- Course Filters -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <button class="filter-btn filter-active px-6 py-2 rounded-full font-medium transition-all" data-filter="all">All Courses</button>
+      <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all hover:bg-gray-100" data-filter="foundation">Foundation</button>
+      <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all hover:bg-gray-100" data-filter="specialized">Specialized</button>
+      <button class="filter-btn px-6 py-2 rounded-full font-medium transition-all hover:bg-gray-100" data-filter="advanced">Advanced</button>
+    </div>
+
+    <!-- Enhanced Courses Grid -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="courses-grid">
+      <!-- Enhanced Course Cards -->
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="foundation">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl flex items-center justify-center">
+            <i data-lucide="heart-pulse" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-blue-600">Foundation</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">General Medicine</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.8</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">Comprehensive foundation program covering internal medicine and primary care essentials.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>12 weeks • 120 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>2,345 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-blue-600">$299</span>
+            <span class="text-gray-500 line-through ml-2">$399</span>
+          </div>
+          <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors course-details-btn" data-course="general-medicine">
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="specialized" style="animation-delay: 0.1s;">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-pink-400 to-red-500 rounded-xl flex items-center justify-center">
+            <i data-lucide="user-check" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-red-600">Specialized</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">Nursing & Patient Care</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.9</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">Advanced clinical skills, patient safety protocols, and modern nursing practices.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>16 weeks • 160 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>1,890 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-red-600">$399</span>
+            <span class="text-gray-500 line-through ml-2">$499</span>
+          </div>
+          <button class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors course-details-btn" data-course="nursing">
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="specialized" style="animation-delay: 0.2s;">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
+            <i data-lucide="pill" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-emerald-600">Specialized</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">Pharmacology</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.7</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">In-depth study of drugs, dosages, interactions, and therapeutic applications.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>14 weeks • 140 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>1,567 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-emerald-600">$349</span>
+            <span class="text-gray-500 line-through ml-2">$449</span>
+          </div>
+          <button class="bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors course-details-btn" data-course="pharmacology">
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="advanced" style="animation-delay: 0.3s;">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-purple-400 to-indigo-600 rounded-xl flex items-center justify-center">
+            <i data-lucide="scissors" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-indigo-600">Advanced</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">Surgery Assistance</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.8</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">Comprehensive training on surgical procedures with hands-on practice and simulation.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>20 weeks • 200 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>934 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-indigo-600">$599</span>
+            <span class="text-gray-500 line-through ml-2">$799</span>
+          </div>
+          <button class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors course-details-btn" data-course="surgery">
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="advanced" style="animation-delay: 0.4s;">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-red-400 to-orange-500 rounded-xl flex items-center justify-center">
+            <i data-lucide="zap" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-orange-600">Advanced</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">Emergency Medicine</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.9</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">Master urgent care, trauma response, and life-saving emergency procedures.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>18 weeks • 180 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>1,234 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-orange-600">$549</span>
+            <span class="text-gray-500 line-through ml-2">$699</span>
+          </div>
+          <button class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors course-details-btn" data-course="emergency">
+            View Details
+          </button>
+        </div>
+      </div>
+
+      <div class="course-card bg-white rounded-2xl shadow-lg hover:shadow-2xl p-6 animate-slide-up" data-category="specialized" style="animation-delay: 0.5s;">
+        <div class="relative mb-4">
+          <div class="w-full h-48 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+            <i data-lucide="microscope" class="w-16 h-16 text-white"></i>
+          </div>
+          <div class="absolute top-3 right-3 bg-white rounded-full px-3 py-1 text-sm font-semibold text-cyan-600">Specialized</div>
+        </div>
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-xl font-semibold">Medical Laboratory</h3>
+          <div class="flex items-center text-yellow-500">
+            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            <span class="text-sm ml-1">4.6</span>
+          </div>
+        </div>
+        <p class="text-gray-600 mb-4">Master diagnostics, pathology tests, and essential laboratory safety protocols.</p>
+        
+        <div class="space-y-3 mb-6">
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+            <span>15 weeks • 150 hours</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="users" class="w-4 h-4 mr-2"></i>
+            <span>1,678 students enrolled</span>
+          </div>
+          <div class="flex items-center text-sm text-gray-600">
+            <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+            <span>Certificate included</span>
+          </div>
+        </div>
+        
+        <div class="flex justify-between items-center">
+          <div>
+            <span class="text-2xl font-bold text-cyan-600">$429</span>
+            <span class="text-gray-500 line-through ml-2">$529</span>
+          </div>
+          <button class="bg-cyan-600 text-white px-6 py-2 rounded-lg hover:bg-cyan-700 transition-colors course-details-btn" data-course="laboratory">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Details Modal -->
+  <div id="course-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto modal">
+      <div class="p-6">
+        <div class="flex justify-between items-center mb-6">
+          <h3 id="modal-title" class="text-2xl font-bold">Course Details</h3>
+          <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+        
+        <div id="modal-content">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enhanced Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 mt-16">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+            </div>
+            <div class="text-xl font-bold text-white">Manoi</div>
+          </div>
+          <p class="text-gray-400">Transforming healthcare education through innovative learning experiences.</p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold text-white mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Courses</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Instructors</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Success Stories</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold text-white mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold text-white mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <i data-lucide="facebook" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-400 transition-colors">
+              <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
+              <i data-lucide="instagram" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <i data-lucide="linkedin" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p>&copy; 2025 Manoi Medical Academy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Course filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const courseCards = document.querySelectorAll('.course-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active filter button
+        filterBtns.forEach(b => b.classList.remove('filter-active'));
+        btn.classList.add('filter-active');
+
+        const filter = btn.dataset.filter;
+
+        // Filter courses
+        courseCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'slideUp 0.5s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Course details modal
+    const modal = document.getElementById('course-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+    const closeModal = document.getElementById('close-modal');
+    const courseDetailsBtns = document.querySelectorAll('.course-details-btn');
+
+    const courseData = {
+      'general-medicine': {
+        title: 'General Medicine',
+        duration: '12 weeks',
+        level: 'Foundation',
+        description: 'Master the fundamentals of internal medicine and primary care with our comprehensive foundation program.',
+        curriculum: [
+          'Human Anatomy & Physiology',
+          'Medical History Taking',
+          'Physical Examination Techniques',
+          'Diagnostic Procedures',
+          'Common Medical Conditions',
+          'Patient Communication',
+          'Medical Ethics',
+          'Clinical Documentation'
+        ],
+        instructor: 'Dr. Sarah Johnson, MD',
+        price: '$299',
+        originalPrice: '$399'
+      },
+      'nursing': {
+        title: 'Nursing & Patient Care',
+        duration: '16 weeks',
+        level: 'Specialized',
+        description: 'Develop advanced clinical skills and master modern nursing practices with emphasis on patient safety.',
+        curriculum: [
+          'Advanced Patient Assessment',
+          'Medication Administration',
+          'Wound Care Management',
+          'Infection Control Protocols',
+          'Emergency Response',
+          'Patient Safety Standards',
+          'Care Planning',
+          'Health Education'
+        ],
+        instructor: 'Jane Smith, RN, MSN',
+        price: '$399',
+        originalPrice: '$499'
+      },
+      'pharmacology': {
+        title: 'Pharmacology',
+        duration: '14 weeks',
+        level: 'Specialized',
+        description: 'Comprehensive study of drug mechanisms, interactions, and therapeutic applications in clinical practice.',
+        curriculum: [
+          'Drug Classifications',
+          'Pharmacokinetics & Pharmacodynamics',
+          'Drug Interactions',
+          'Dosage Calculations',
+          'Adverse Drug Reactions',
+          'Clinical Pharmacology',
+          'Prescription Management',
+          'Patient Counseling'
+        ],
+        instructor: 'Dr. Michael Chen, PharmD',
+        price: '$349',
+        originalPrice: '$449'
+      },
+      'surgery': {
+        title: 'Surgery Assistance',
+        duration: '20 weeks',
+        level: 'Advanced',
+        description: 'Intensive training program covering surgical procedures, sterile techniques, and operating room protocols.',
+        curriculum: [
+          'Surgical Anatomy',
+          'Sterile Technique',
+          'Surgical Instruments',
+          'Operating Room Protocols',
+          'Pre/Post-operative Care',
+          'Surgical Complications',
+          'Minimally Invasive Procedures',
+          'Surgical Team Coordination'
+        ],
+        instructor: 'Dr. Robert Williams, MD',
+        price: '$599',
+        originalPrice: '$799'
+      },
+      'emergency': {
+        title: 'Emergency Medicine',
+        duration: '18 weeks',
+        level: 'Advanced',
+        description: 'Master critical care skills, trauma management, and life-saving procedures for emergency situations.',
+        curriculum: [
+          'Trauma Assessment',
+          'Advanced Life Support',
+          'Emergency Procedures',
+          'Triage Protocols',
+          'Critical Care Management',
+          'Cardiac Emergencies',
+          'Toxicology',
+          'Disaster Response'
+        ],
+        instructor: 'Dr. Lisa Anderson, MD',
+        price: '$549',
+        originalPrice: '$699'
+      },
+      'laboratory': {
+        title: 'Medical Laboratory',
+        duration: '15 weeks',
+        level: 'Specialized',
+        description: 'Comprehensive laboratory training covering diagnostics, pathology testing, and safety protocols.',
+        curriculum: [
+          'Laboratory Safety',
+          'Sample Collection',
+          'Microscopy Techniques',
+          'Blood Chemistry Analysis',
+          'Microbiology Testing',
+          'Quality Control',
+          'Laboratory Information Systems',
+          'Result Interpretation'
+        ],
+        instructor: 'Dr. Patricia Lee, PhD',
+        price: '$429',
+        originalPrice: '$529'
+      }
+    };
+
+    courseDetailsBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const courseId = btn.dataset.course;
+        const course = courseData[courseId];
+
+        if (course) {
+          modalTitle.textContent = course.title;
+          modalContent.innerHTML = `
+            <div class="mb-6">
+              <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">${course.level}</span>
+                <span class="text-gray-600">${course.duration}</span>
+              </div>
+              <p class="text-gray-700 text-lg">${course.description}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <h4 class="font-semibold text-lg mb-3">Course Curriculum</h4>
+                <ul class="space-y-2">
+                  ${course.curriculum.map(item => `
+                    <li class="flex items-center text-gray-600">
+                      <i data-lucide="check-circle" class="w-4 h-4 text-green-500 mr-2"></i>
+                      ${item}
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+              
+              <div>
+                <h4 class="font-semibold text-lg mb-3">Course Details</h4>
+                <div class="space-y-3">
+                  <div class="flex items-center text-gray-600">
+                    <i data-lucide="user" class="w-4 h-4 mr-2"></i>
+                    <span>Instructor: ${course.instructor}</span>
+                  </div>
+                  <div class="flex items-center text-gray-600">
+                    <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+                    <span>Duration: ${course.duration}</span>
+                  </div>
+                  <div class="flex items-center text-gray-600">
+                    <i data-lucide="award" class="w-4 h-4 mr-2"></i>
+                    <span>Certificate of Completion</span>
+                  </div>
+                  <div class="flex items-center text-gray-600">
+                    <i data-lucide="globe" class="w-4 h-4 mr-2"></i>
+                    <span>Online & On-campus Available</span>
+                  </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-2xl font-bold text-blue-600">${course.price}</span>
+                    <span class="text-gray-500 line-through">${course.originalPrice}</span>
+                  </div>
+                  <div class="space-y-2">
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                      Enroll Now
+                    </button>
+                    <button class="w-full border border-blue-600 text-blue-600 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                      Add to Wishlist
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-blue-800 mb-2">Special Offer</h4>
+              <p class="text-blue-700">Enroll now and save ${parseInt(course.originalPrice.slice(1)) - parseInt(course.price.slice(1))}! Limited time offer expires in 5 days.</p>
+            </div>
+          `;
+
+          // Re-initialize Lucide icons for the new content
+          lucide.createIcons();
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search courses...';
+    searchInput.className = 'px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none';
+    
+    // Add search to the filters section
+    const filtersSection = document.querySelector('.flex.flex-wrap.justify-center.gap-4.mb-12');
+    const searchWrapper = document.createElement('div');
+    searchWrapper.className = 'w-full max-w-md mx-auto mb-6';
+    searchWrapper.appendChild(searchInput);
+    filtersSection.parentNode.insertBefore(searchWrapper, filtersSection);
+
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      courseCards.forEach(card => {
+        const courseName = card.querySelector('h3').textContent.toLowerCase();
+        const courseDescription = card.querySelector('p').textContent.toLowerCase();
+        
+        if (courseName.includes(searchTerm) || courseDescription.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Add loading states and animations
+    const addLoadingState = (button) => {
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.innerHTML = `
+        <div class="flex items-center justify-center space-x-2">
+          <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+          <span>Loading...</span>
+        </div>
+      `;
+      
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = originalText;
+      }, 2000);
+    };
+
+    // Add scroll-to-top functionality
+    const scrollToTopBtn = document.createElement('button');
+    scrollToTopBtn.innerHTML = '<i data-lucide="arrow-up" class="w-5 h-5"></i>';
+    scrollToTopBtn.className = 'fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all transform translate-y-16 opacity-0';
+    scrollToTopBtn.id = 'scroll-to-top';
+    document.body.appendChild(scrollToTopBtn);
+
+    lucide.createIcons();
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.style.transform = 'translateY(0)';
+        scrollToTopBtn.style.opacity = '1';
+      } else {
+        scrollToTopBtn.style.transform = 'translateY(16px)';
+        scrollToTopBtn.style.opacity = '0';
+      }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-slide-up, .animate-fade-in').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -36,12 +36,13 @@
           <div class="text-[11px] text-gray-500 tracking-widest">LIFECARE AND SAVER</div>
         </div>
       </div>
+      <!-- Fixed navigation - added missing md:flex -->
       <nav class="hidden md:flex items-center gap-8 font-medium">
-        <a href="#" class="text-indigo-600">Home</a>
-        <a href="#about" class="hover:text-indigo-600">About Us</a>
-        <a href="#clinical" class="hover:text-indigo-600">Clinical Training</a>
-        <a href="#corporate" class="hover:text-indigo-600">Corporate Training</a>
-        <a href="#contact" class="hover:text-indigo-600">Contact Us</a>
+        <a href="index.html" class="text-blue-600 font-semibold">Home</a>
+        <a href="about.html" class="hover:text-blue-600">About</a>
+        <a href="course.html" class="hover:text-blue-600">Courses</a>
+        <a href="clinical-training.html" class="hover:text-blue-600">Clinical Training</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
       </nav>
       <div class="hidden md:block">
         <a href="#enquire" class="px-5 py-2 rounded bg-[#d2341f] text-white font-semibold hover:opacity-90">ENQUIRE</a>
@@ -50,12 +51,13 @@
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
+    <!-- Fixed mobile menu links -->
     <div class="md:hidden px-4 pb-4" x-show="open" x-transition>
-      <a class="block py-2" href="#">Home</a>
-      <a class="block py-2" href="#about">About Us</a>
-      <a class="block py-2" href="#clinical">Clinical Training</a>
-      <a class="block py-2" href="#corporate">Corporate Training</a>
-      <a class="block py-2" href="#contact">Contact Us</a>
+      <a class="block py-2" href="index.html">Home</a>
+      <a class="block py-2" href="about.html">About</a>
+      <a class="block py-2" href="course.html">Courses</a>
+      <a class="block py-2" href="clinical-training.html">Clinical Training</a>
+      <a class="block py-2" href="contact.html">Contact</a>
       <a class="inline-flex mt-2 px-4 py-2 rounded bg-[#d2341f] text-white font-semibold" href="#enquire">ENQUIRE</a>
     </div>
   </header>
@@ -100,18 +102,105 @@
         <button @click="i=idx" class="w-2.5 h-2.5 rounded-full" :class="i===idx ? 'bg-white' : 'bg-white/50'"></button>
       </template>
     </div>
-
-    <!-- floating call & chat buttons -->
-    <a href="tel:+919876543210" class="fixed left-4 bottom-6 w-14 h-14 rounded-full bg-[#1aa248] text-white grid place-content-center shadow-xl hover:scale-105 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.4 21 3 13.6 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.2 2.2z"/></svg>
-    </a>
-    <a href="#whatsapp" class="fixed right-4 bottom-6 w-14 h-14 rounded-full bg-[#25D366] text-white grid place-content-center shadow-xl hover:scale-105 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M20.52 3.48A11.86 11.86 0 0012 0C5.35 0 0 5.35 0 12c0 2.1.55 4.06 1.52 5.77L0 24l6.36-1.67A11.93 11.93 0 0012 24c6.65 0 12-5.35 12-12 0-3.19-1.25-6.17-3.48-8.52zM12 21.33a9.33 9.33 0 01-4.75-1.3l-.34-.2-3.77.99 1.01-3.67-.22-.38A9.33 9.33 0 1121.33 12 9.34 9.34 0 0112 21.33zm5.32-6.96c-.29-.15-1.71-.84-1.98-.94-.27-.1-.47-.15-.67.15-.2.29-.77.94-.94 1.14-.17.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.53.15-.18.2-.31.31-.51.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.29-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.12.15.2 2.13 3.25 5.17 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35z"/></svg>
-    </a>
   </section>
 
+   <!-- Floating Buttons Container -->
+<div class="fixed right-4 bottom-6 flex flex-col items-center gap-4 z-50">
+
+  <!-- Call Button -->
+  <a href="tel:+919876543210" class="w-14 h-14 rounded-full bg-[#1aa248] text-white grid place-content-center shadow-xl hover:scale-105 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.4 21 3 13.6 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.02l-2.2 2.2z"/>
+    </svg>
+  </a>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/919876543210" class="w-14 h-14 rounded-full bg-[#25D366] text-white grid place-content-center shadow-xl hover:scale-105 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+      <path d="M20.52 3.48A11.86 11.86 0 0012 0C5.35 0 0 5.35 0 12c0 2.1.55 4.06 1.52 5.77L0 24l6.36-1.67A11.93 11.93 0 0012 24c6.65 0 12-5.35 12-12 0-3.19-1.25-6.17-3.48-8.52zM12 21.33a9.33 9.33 0 01-4.75-1.3l-.34-.2-3.77.99 1.01-3.67-.22-.38A9.33 9.33 0 1121.33 12 9.34 9.34 0 0112 21.33zm5.32-6.96c-.29-.15-1.71-.84-1.98-.94-.27-.1-.47-.15-.67.15-.2.29-.77.94-.94 1.14-.17.2-.35.22-.64.07-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.35.44-.53.15-.18.2-.31.31-.51.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.29-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.12.15.2 2.13 3.25 5.17 4.56.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.71-.7 1.95-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35z"/>
+    </svg>
+  </a>
+
+  <!-- Chatbot Button -->
+  <div x-data="{ open: false, messages: [{ text: 'Hello! How can I help you with our training programs?', from: 'bot' }], input: '' }">
+    <button @click="open = !open" class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 grid place-content-center transition">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+      </svg>
+    </button>
+
+    <!-- Chat Window -->
+    <div x-show="open" @click.away="open = false"
+         class="absolute right-0 bottom-16 w-80 h-96 bg-white shadow-xl rounded-2xl flex flex-col border border-gray-200"
+         x-transition>
+      <!-- Header -->
+      <div class="bg-blue-600 text-white p-3 rounded-t-2xl flex justify-between items-center">
+        <span class="font-semibold">Manoi Assistant</span>
+        <button @click="open = false" class="text-white hover:text-gray-200">✖</button>
+      </div>
+      <!-- Messages -->
+      <div class="flex-1 p-3 space-y-2 overflow-y-auto text-sm">
+        <template x-for="(msg, index) in messages" :key="index">
+          <div :class="msg.from === 'bot' ? 'text-left' : 'text-right'">
+            <span :class="msg.from === 'bot' ? 'bg-gray-200 text-black' : 'bg-blue-600 text-white'"
+                  class="inline-block px-3 py-2 rounded-xl max-w-xs">
+              <span x-text="msg.text"></span>
+            </span>
+          </div>
+        </template>
+      </div>
+      <!-- Input -->
+      <div class="p-2 border-t flex">
+        <input x-model="input" @keydown.enter="
+          if(input.trim() !== '') {
+            messages.push({ text: input, from: 'user' });
+            let userInput = input.toLowerCase();
+            let response = 'Thank you for your message! Our team will contact you shortly.';
+            if(userInput.includes('course') || userInput.includes('training')) {
+              response = 'We offer BLS, ACLS, and PALS courses. Which one interests you?';
+            } else if(userInput.includes('price') || userInput.includes('cost')) {
+              response = 'Please call us at +91 98765 43210 for pricing details.';
+            } else if(userInput.includes('schedule') || userInput.includes('time')) {
+              response = 'Our courses run throughout the week. Contact us for the latest schedule.';
+            }
+            setTimeout(() => {
+              messages.push({ text: response, from: 'bot' });
+            }, 600);
+            input = '';
+          }
+        "
+        type="text" placeholder="Type a message..."
+        class="flex-1 border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm" />
+        <button @click="
+          if(input.trim() !== '') {
+            messages.push({ text: input, from: 'user' });
+            let userInput = input.toLowerCase();
+            let response = 'Thank you for your message! Our team will contact you shortly.';
+            if(userInput.includes('course') || userInput.includes('training')) {
+              response = 'We offer BLS, ACLS, and PALS courses. Which one interests you?';
+            } else if(userInput.includes('price') || userInput.includes('cost')) {
+              response = 'Please call us at +91 98765 43210 for pricing details.';
+            } else if(userInput.includes('schedule') || userInput.includes('time')) {
+              response = 'Our courses run throughout the week. Contact us for the latest schedule.';
+            }
+            setTimeout(() => {
+              messages.push({ text: response, from: 'bot' });
+            }, 600);
+            input = '';
+          }
+        " class="ml-2 bg-blue-600 text-white px-4 rounded-xl hover:bg-blue-700 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
   <!-- Step 2: Certification + Enquiry Form -->
-<section class="bg-gray-50 py-16">
+<section id="enquire" class="bg-gray-50 py-16">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     
     <!-- Left Side: Heading + Badges -->
@@ -126,9 +215,9 @@
 
       <!-- Badges -->
       <div class="flex space-x-6">
-        <img src="https://via.placeholder.com/100x100" alt="Badge 1" class="h-20 w-auto">
-        <img src="https://via.placeholder.com/100x100" alt="Badge 2" class="h-20 w-auto">
-        <img src="https://via.placeholder.com/100x100" alt="Badge 3" class="h-20 w-auto">
+        <img src="https://via.placeholder.com/100x100?text=AHA" alt="AHA Badge" class="h-20 w-auto">
+        <img src="https://via.placeholder.com/100x100?text=Certified" alt="Certified Badge" class="h-20 w-auto">
+        <img src="https://via.placeholder.com/100x100?text=Global" alt="Global Badge" class="h-20 w-auto">
       </div>
     </div>
 
@@ -140,16 +229,16 @@
         </h3>
         <form action="#" method="POST" class="space-y-4">
           <div>
-            <input type="text" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="name" placeholder="Your Name" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
           </div>
           <div>
-            <input type="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="email" name="email" placeholder="Your Email" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
           </div>
           <div>
-            <input type="tel" placeholder="Your Phone" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="tel" name="phone" placeholder="Your Phone" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none">
           </div>
           <div>
-            <textarea placeholder="Your Message" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            <textarea name="message" placeholder="Your Message" rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
           </div>
           <button type="submit" class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition">
             Submit
@@ -159,8 +248,9 @@
     </div>
   </div>
 </section>
+
 <!-- Step 3: Courses Section -->
-<section class="bg-white py-20">
+<section id="courses" class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <!-- Section Heading -->
     <div class="text-center mb-12">
@@ -177,42 +267,42 @@
       
       <!-- Course Card 1 -->
       <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
-        <img src="https://via.placeholder.com/400x250" alt="Course 1" class="rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="BLS Course" class="rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Basic Life Support (BLS)
         </h3>
         <p class="text-gray-600 mb-4">
           Learn essential CPR and emergency response skills as per AHA guidelines.
         </p>
-        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+        <a href="course.html#bls" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
           Enroll Now
         </a>
       </div>
 
       <!-- Course Card 2 -->
       <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
-        <img src="https://via.placeholder.com/400x250" alt="Course 2" class="rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop" alt="ACLS Course" class="rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Advanced Cardiac Life Support (ACLS)
         </h3>
         <p class="text-gray-600 mb-4">
           Designed for healthcare providers to manage cardiovascular emergencies.
         </p>
-        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+        <a href="course.html#acls" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
           Enroll Now
         </a>
       </div>
 
       <!-- Course Card 3 -->
       <div class="bg-gray-50 rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col">
-        <img src="https://via.placeholder.com/400x250" alt="Course 3" class="rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400&h=250&fit=crop" alt="PALS Course" class="rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Pediatric Advanced Life Support (PALS)
         </h3>
         <p class="text-gray-600 mb-4">
           Specialized training for managing emergencies in infants and children.
         </p>
-        <a href="#" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
+        <a href="course.html#pals" class="mt-auto bg-blue-600 text-white px-5 py-3 rounded-lg text-center font-medium hover:bg-blue-700 transition">
           Enroll Now
         </a>
       </div>
@@ -220,6 +310,7 @@
     </div>
   </div>
 </section>
+
 <!-- Step 4: Why Choose Us Section -->
 <section class="bg-gray-50 py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -239,9 +330,9 @@
       <!-- Feature 1 -->
       <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
         <div class="flex items-center justify-center mb-6">
-          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-3xl font-bold">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-3xl">
             🎓
-          </span>
+          </div>
         </div>
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Certified Trainers
@@ -254,9 +345,9 @@
       <!-- Feature 2 -->
       <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
         <div class="flex items-center justify-center mb-6">
-          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-green-100 text-green-600 text-3xl font-bold">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-green-100 text-green-600 text-3xl">
             🏥
-          </span>
+          </div>
         </div>
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Hands-On Training
@@ -269,9 +360,9 @@
       <!-- Feature 3 -->
       <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
         <div class="flex items-center justify-center mb-6">
-          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 text-3xl font-bold">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-yellow-100 text-yellow-600 text-3xl">
             📜
-          </span>
+          </div>
         </div>
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           Globally Recognized
@@ -284,9 +375,9 @@
       <!-- Feature 4 -->
       <div class="bg-white shadow rounded-2xl p-8 text-center hover:shadow-lg transition">
         <div class="flex items-center justify-center mb-6">
-          <span class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 text-3xl font-bold">
+          <div class="w-16 h-16 flex items-center justify-center rounded-full bg-purple-100 text-purple-600 text-3xl">
             ⭐
-          </span>
+          </div>
         </div>
         <h3 class="text-xl font-semibold text-gray-800 mb-2">
           5-Star Rated
@@ -299,6 +390,7 @@
     </div>
   </div>
 </section>
+
 <!-- Step 5: Testimonials Section -->
 <section class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -318,21 +410,7 @@
       <!-- Testimonial 1 -->
       <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
         <p class="text-gray-700 italic mb-6">
-          “The instructors were amazing! The training was very practical and gave me confidence in handling emergencies.”
-        </p>
-        <div class="flex items-center gap-4">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
-          <div>
-            <h4 class="font-semibold text-gray-800">Anjali Sharma</h4>
-            <p class="text-sm text-gray-500">Nursing Student</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Testimonial 2 -->
-      <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
-        <p class="text-gray-700 italic mb-6">
-          “The certification is globally valid. It helped me secure a job abroad as a healthcare provider.”
+          "The instructors were amazing! The training was very practical and gave me confidence in handling emergencies."
         </p>
         <div class="flex items-center gap-4">
           <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
@@ -346,7 +424,7 @@
       <!-- Testimonial 3 -->
       <div class="bg-gray-50 rounded-2xl p-8 shadow hover:shadow-lg transition">
         <p class="text-gray-700 italic mb-6">
-          “Very professional trainers. The hands-on practice made the learning experience super effective.”
+          "Very professional trainers. The hands-on practice made the learning experience super effective."
         </p>
         <div class="flex items-center gap-4">
           <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
@@ -360,7 +438,8 @@
     </div>
   </div>
 </section>
-<!-- Step 6: Courses Section -->
+
+<!-- Step 6: Training Programs Section -->
 <section class="bg-gray-50 py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <!-- Heading -->
@@ -378,33 +457,33 @@
       
       <!-- Course 1 -->
       <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
-        <img src="https://img.freepik.com/free-vector/medical-training-illustration_23-2148855633.jpg" alt="BLS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop" alt="BLS Training" class="w-full h-40 object-cover rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-3">BLS – Basic Life Support</h3>
         <p class="text-gray-600 mb-4">Learn essential CPR and AED skills to respond in emergencies.</p>
         <span class="text-sm text-gray-500 mb-4">Duration: 1 Day</span>
-        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+        <a href="course.html#bls" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
           Enroll Now
         </a>
       </div>
 
       <!-- Course 2 -->
       <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
-        <img src="https://img.freepik.com/free-vector/first-aid-concept-illustration_114360-18685.jpg" alt="ACLS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=200&fit=crop" alt="ACLS Training" class="w-full h-40 object-cover rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-3">ACLS – Advanced Cardiac Life Support</h3>
         <p class="text-gray-600 mb-4">Advanced training for managing cardiac emergencies in adults.</p>
         <span class="text-sm text-gray-500 mb-4">Duration: 2 Days</span>
-        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+        <a href="course.html#acls" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
           Enroll Now
         </a>
       </div>
 
       <!-- Course 3 -->
       <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition p-8 flex flex-col">
-        <img src="https://img.freepik.com/free-vector/healthcare-training-illustration_23-2148873462.jpg" alt="PALS" class="w-full h-40 object-cover rounded-lg mb-6">
+        <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400&h=200&fit=crop" alt="PALS Training" class="w-full h-40 object-cover rounded-lg mb-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-3">PALS – Pediatric Advanced Life Support</h3>
         <p class="text-gray-600 mb-4">Specialized training for emergency care of infants and children.</p>
         <span class="text-sm text-gray-500 mb-4">Duration: 2 Days</span>
-        <a href="#" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
+        <a href="course.html#pals" class="mt-auto inline-block bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-700 transition">
           Enroll Now
         </a>
       </div>
@@ -412,6 +491,7 @@
     </div>
   </div>
 </section>
+
 <!-- Step 7: Gallery Section -->
 <section class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
@@ -427,24 +507,25 @@
 
     <!-- Gallery Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <img src="https://img.freepik.com/free-photo/doctors-performing-medical-procedure-simulation_23-2149867412.jpg" alt="Training" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/nurses-training-with-medical-dummies_23-2149902321.jpg" alt="Lab" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/medical-students-practicing-with-patient-mannequin_23-2149897650.jpg" alt="Practice" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/healthcare-professionals-training-session_23-2149898745.jpg" alt="Classroom" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/student-doctor-training-mannequin_23-2149876321.jpg" alt="Workshop" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/doctors-nurses-training-hospital_23-2149902145.jpg" alt="Simulation" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/medical-practice-class_23-2149887435.jpg" alt="Demo" class="rounded-xl shadow-lg hover:scale-105 transition">
-      <img src="https://img.freepik.com/free-photo/modern-healthcare-lab-training_23-2149904321.jpg" alt="Facility" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=300&h=300&fit=crop" alt="Training Session" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=300&h=300&fit=crop" alt="Medical Training" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=300&fit=crop" alt="CPR Practice" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=300&h=300&fit=crop" alt="Classroom Training" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=300&h=300&fit=crop" alt="Medical Workshop" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=300&h=300&fit=crop" alt="Simulation Training" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=300&h=300&fit=crop" alt="Training Demo" class="rounded-xl shadow-lg hover:scale-105 transition">
+      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=300&h=300&fit=crop" alt="Medical Facility" class="rounded-xl shadow-lg hover:scale-105 transition">
     </div>
   </div>
 </section>
-<!-- Step 8: Testimonials Section -->
+
+<!-- Step 8: Additional Testimonials Section -->
 <section class="bg-gray-50 py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <!-- Heading -->
     <div class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-        What Our Students Say
+        More Success Stories
       </h2>
       <p class="text-gray-600 max-w-2xl mx-auto">
         Hear from our students who trained with us and are now excelling in their careers.
@@ -497,6 +578,7 @@
     </div>
   </div>
 </section>
+
 <!-- Step 9: Contact / Call-to-Action Section -->
 <section class="bg-blue-600 py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center text-white">
@@ -511,8 +593,8 @@
     </p>
 
     <!-- Call-to-Action Buttons -->
-    <div class="flex justify-center gap-6">
-      <a href="#enroll" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a href="#courses" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
         Enroll Now
       </a>
       <a href="#contact" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition">
@@ -534,17 +616,18 @@
 
     <!-- Form -->
     <form class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white shadow-lg p-8 rounded-2xl">
-      <input type="text" placeholder="Full Name" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-      <input type="email" placeholder="Email Address" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-      <input type="tel" placeholder="Phone Number" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-      <input type="text" placeholder="Subject" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-      <textarea placeholder="Your Message" rows="5" class="md:col-span-2 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+      <input type="text" name="fullname" placeholder="Full Name" required class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="email" name="email_address" placeholder="Email Address" required class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="tel" name="phone_number" placeholder="Phone Number" required class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="text" name="subject" placeholder="Subject" class="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+      <textarea name="message" placeholder="Your Message" rows="5" class="md:col-span-2 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
       <button type="submit" class="md:col-span-2 bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition">
         Send Message
       </button>
     </form>
   </div>
 </section>
+
 <!-- Footer Section -->
 <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -562,10 +645,9 @@
     <div>
       <h3 class="text-white font-semibold mb-4">Quick Links</h3>
       <ul class="space-y-2">
-        <li><a href="#about" class="hover:text-white">About Us</a></li>
-        <li><a href="#courses" class="hover:text-white">Courses</a></li>
-        <li><a href="#labs" class="hover:text-white">Labs</a></li>
-        <li><a href="#team" class="hover:text-white">Our Team</a></li>
+        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+        <li><a href="course.html" class="hover:text-white">Courses</a></li>
+        <li><a href="clinical-training.html" class="hover:text-white">Clinical Training</a></li>
         <li><a href="#contact" class="hover:text-white">Contact</a></li>
       </ul>
     </div>
@@ -585,16 +667,16 @@
     <!-- Column 4: Contact Info -->
     <div>
       <h3 class="text-white font-semibold mb-4">Get in Touch</h3>
-      <p class="text-gray-400 text-sm mb-2">📍 123 Learning Street, Delhi, India</p>
-      <p class="text-gray-400 text-sm mb-2">📞 +91 98765 43210</p>
-      <p class="text-gray-400 text-sm mb-4">📧 support@manoi.in</p>
+      <p class="text-gray-400 text-sm mb-2">G-31, 1st Floor Sector 3 Noida</p>
+      <p class="text-gray-400 text-sm mb-2">+91 98765 43210</p>
+      <p class="text-gray-400 text-sm mb-4">support@manoi.in</p>
 
       <!-- Social Media Icons -->
       <div class="flex space-x-4">
-        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="hover:text-white text-xl">f</a>
+        <a href="#" class="hover:text-white text-xl">t</a>
+        <a href="#" class="hover:text-white text-xl">i</a>
+        <a href="#" class="hover:text-white text-xl">in</a>
       </div>
     </div>
 
@@ -607,4 +689,12 @@
 </footer>
 
 </body>
-</html>
+</html> src="https://randomuser.me/api/portraits/women/65.jpg" alt="Student" class="w-12 h-12 rounded-full object-cover">
+          <div>
+            <h4 class="font-semibold text-gray-800">Anjali Sharma</h4>
+            <p class="text-sm text-gray-500">Nursing Student</p>
+          </div>
+        </div>
+      </div>
+
+     

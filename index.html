@@ -19,7 +19,7 @@
   </style>
 </head>
 <body class="text-gray-900 antialiased">
-  <!-- Top strip -->
+  <!-- Top strip
   <div class="w-full bg-[#0b1a72] text-white text-sm">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
       <div class="flex items-center gap-2">
@@ -31,21 +31,26 @@
         Enquire Now
       </a>
     </div>
-  </div>
+  </div> -->
 
 <!-- Navbar -->
 <header x-data="{open:false}" class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <div class="w-16 h-16 rounded bg-blue-600 flex items-center justify-center">
-        <span class="text-white font-bold text-lg">M</span>
-      </div>
-      <div>
-        <div class="text-xl font-bold leading-none">MANOI</div>
-        <div class="text-[11px] text-gray-500 tracking-widest">LIFECARE AND SAVER</div>
-      </div>
+   <!-- Logo with Brand -->
+<a href="index.html" class="flex items-center gap-3">
+  <!-- Round Logo -->
+  <img src="images/logo.png" alt="Manoi Logo" class="w-12 h-12 rounded-full object-cover shadow-md" />
+  
+  <!-- Brand Text -->
+  <div class="leading-tight">
+    <div class="text-2xl font-bold text-indigo-700 tracking-wide">MANOI</div>
+    <div class="text-[11px] font-medium uppercase text-gray-500 tracking-[0.2em]">
+      Lifecare & Saver
     </div>
+  </div>
+</a>
+
+
 
     <!-- Desktop Menu -->
     <nav class="hidden md:flex items-center gap-8 font-medium">
@@ -60,7 +65,6 @@
     <div class="hidden md:block">
       <a href="enquire.html" class="px-5 py-2 rounded bg-[#d2341f] text-white font-semibold hover:opacity-90">ENQUIRE</a>
     </div>
-
     <!-- Mobile Menu Button -->
     <button class="md:hidden" @click="open=!open" aria-label="Toggle menu">
       <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
